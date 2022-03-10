@@ -10,12 +10,12 @@ import (
 )
 
 type Config struct {
-	Host     string `yaml:"host"`
-	Port     string `yaml:"port"`
-	User     string `yaml:"user"`
-	DBName   string `yaml:"dbName"`
-	SSLMode  bool   `yaml:"sslMode"`
-	Password string `yaml:"password"`
+	Host     string `mapstructure:"host"`
+	Port     string `mapstructure:"port"`
+	User     string `mapstructure:"user"`
+	DBName   string `mapstructure:"dbName"`
+	SSLMode  bool   `mapstructure:"sslMode"`
+	Password string `mapstructure:"password"`
 }
 
 const (

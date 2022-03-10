@@ -7,7 +7,7 @@ import (
 )
 
 type Producer interface {
-	PublishMessage(ctx context.Context, msgs ...kafka.Message) error
+	PublishMessage(ctx context.Context, messages ...kafka.Message) error
 	Close() error
 }
 

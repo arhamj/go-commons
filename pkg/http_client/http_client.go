@@ -18,8 +18,8 @@ const (
 )
 
 type HttpClientConfig struct {
-	ClientTimeout time.Duration
-	RetryCount    int
+	ClientTimeout time.Duration `mapstructure:"client_timeout"`
+	RetryCount    int           `mapstructure:"retry_count"`
 }
 
 type Option func(client *resty.Client)
@@ -35,6 +35,7 @@ func ConfigOption(cfg HttpClientConfig) Option {
 	}
 }
 
+// NewHttpClient initialises a Resty Http client with timeouts and retries
 func NewHttpClient(debugMode bool, options ...Option) *resty.Client {
 	t := &http.Transport{
 		DialContext:         (&net.Dialer{Timeout: dialContextTimeout}).DialContext,
@@ -47,6 +48,7 @@ func NewHttpClient(debugMode bool, options ...Option) *resty.Client {
 		SetRetryCount(defaultRetryCount).
 		SetRetryWaitTime(clientRetryWaitTime).
 		SetTransport(t)
+
 	for _, option := range options {
 		option(client)
 	}
