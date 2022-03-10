@@ -8,10 +8,10 @@ import (
 )
 
 type Config struct {
-	ServiceName string `mapstructure:"serviceName"`
-	HostPort    string `mapstructure:"hostPort"`
+	ServiceName string `mapstructure:"service_name"`
+	HostPort    string `mapstructure:"host_port"`
 	Enable      bool   `mapstructure:"enable"`
-	LogSpans    bool   `mapstructure:"logSpans"`
+	LogSpans    bool   `mapstructure:"log_spans"`
 }
 
 func NewJaegerTracer(jaegerConfig *Config) (opentracing.Tracer, io.Closer, error) {

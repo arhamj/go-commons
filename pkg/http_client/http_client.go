@@ -17,20 +17,20 @@ const (
 	defaultClientTimeout = 5 * time.Second
 )
 
-type HttpClientConfig struct {
+type Config struct {
 	ClientTimeout time.Duration `mapstructure:"client_timeout"`
 	RetryCount    int           `mapstructure:"retry_count"`
 }
 
 type Option func(client *resty.Client)
 
-func ConfigOption(cfg HttpClientConfig) Option {
+func ConfigOption(cfg Config) Option {
 	return func(client *resty.Client) {
 		if cfg.ClientTimeout != 0 {
 			client.SetTimeout(cfg.ClientTimeout)
 		}
 		if cfg.RetryCount != 0 {
-			client.SetRetryCount(0)
+			client.SetRetryCount(cfg.RetryCount)
 		}
 	}
 }

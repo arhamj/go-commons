@@ -23,7 +23,7 @@ const (
 	healthCheckPeriod = 1 * time.Minute
 	maxConnIdleTime   = 1 * time.Minute
 	maxConnLifetime   = 3 * time.Minute
-	minConns          = 10
+	minConnections    = 10
 	lazyConnect       = false
 )
 
@@ -47,7 +47,7 @@ func NewPgxConn(cfg *Config) (*pgxpool.Pool, error) {
 	poolCfg.HealthCheckPeriod = healthCheckPeriod
 	poolCfg.MaxConnIdleTime = maxConnIdleTime
 	poolCfg.MaxConnLifetime = maxConnLifetime
-	poolCfg.MinConns = minConns
+	poolCfg.MinConns = minConnections
 	poolCfg.LazyConnect = lazyConnect
 
 	connPool, err := pgxpool.ConnectConfig(ctx, poolCfg)

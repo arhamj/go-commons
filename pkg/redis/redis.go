@@ -13,15 +13,15 @@ type Config struct {
 }
 
 const (
-	maxRetries      = 5
-	minRetryBackoff = 300 * time.Millisecond
-	maxRetryBackoff = 500 * time.Millisecond
-	dialTimeout     = 5 * time.Second
-	readTimeout     = 5 * time.Second
-	writeTimeout    = 3 * time.Second
-	minIdleConns    = 20
-	poolTimeout     = 6 * time.Second
-	idleTimeout     = 12 * time.Second
+	maxRetries         = 5
+	minRetryBackoff    = 300 * time.Millisecond
+	maxRetryBackoff    = 500 * time.Millisecond
+	dialTimeout        = 5 * time.Second
+	readTimeout        = 5 * time.Second
+	writeTimeout       = 3 * time.Second
+	minIdleConnections = 20
+	poolTimeout        = 6 * time.Second
+	idleTimeout        = 12 * time.Second
 )
 
 func NewUniversalRedisClient(cfg *Config) redis.UniversalClient {
@@ -37,7 +37,7 @@ func NewUniversalRedisClient(cfg *Config) redis.UniversalClient {
 		ReadTimeout:     readTimeout,
 		WriteTimeout:    writeTimeout,
 		PoolSize:        cfg.PoolSize,
-		MinIdleConns:    minIdleConns,
+		MinIdleConns:    minIdleConnections,
 		PoolTimeout:     poolTimeout,
 		IdleTimeout:     idleTimeout,
 	})
