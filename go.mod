@@ -1,4 +1,4 @@
-module commons
+module github.com/arhamj/go-commons
 
 go 1.17
 
