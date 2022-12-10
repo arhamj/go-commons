@@ -181,6 +181,8 @@ func ParseErrors(err error, debug bool) RestErr {
 		return NewRestError(http.StatusUnauthorized, ErrUnauthorized, err.Error(), debug)
 	case errors.Is(err, WrongCredentials):
 		return NewRestError(http.StatusUnauthorized, ErrUnauthorized, err.Error(), debug)
+	case strings.Contains(strings.ToLower(err.Error()), "record not found"):
+		return NewRestError(http.StatusNotFound, ErrNotFound, err.Error(), debug)
 	case strings.Contains(strings.ToLower(err.Error()), "sqlstate"):
 		return parseSqlErrors(err, debug)
 	case strings.Contains(strings.ToLower(err.Error()), "field validation"):
@@ -205,7 +207,7 @@ func ParseErrors(err error, debug bool) RestErr {
 	case strings.Contains(strings.ToLower(err.Error()), "no documents in result"):
 		return NewRestError(http.StatusNotFound, ErrNotFound, err.Error(), debug)
 	default:
-		if restErr, ok := err.(*RestError); ok {
+		if restErr, ok := err.(RestError); ok {
 			return restErr
 		}
 		return NewRestError(http.StatusInternalServerError, ErrInternalServerError, errors.Cause(err).Error(), debug)
