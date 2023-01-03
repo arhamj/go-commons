@@ -7,7 +7,7 @@ require (
 	github.com/go-redis/redis/v9 v9.0.0-rc.2
 	github.com/go-resty/resty/v2 v2.7.0
 	github.com/jackc/pgx/v4 v4.15.0
-	github.com/labstack/echo/v4 v4.7.0
+	github.com/labstack/echo/v4 v4.9.0
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/pkg/errors v0.9.1
 	github.com/segmentio/kafka-go v0.4.30
