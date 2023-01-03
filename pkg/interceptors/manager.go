@@ -1,8 +1,8 @@
 package interceptors
 
 import (
-	"commons/pkg/logger"
 	"context"
+	"github.com/arhamj/go-commons/pkg/logger"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 	"time"

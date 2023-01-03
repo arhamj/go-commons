@@ -1,7 +1,7 @@
 package redis
 
 import (
-	"github.com/go-redis/redis/v8"
+	"github.com/go-redis/redis/v9"
 	"time"
 )
 
@@ -39,7 +39,7 @@ func NewUniversalRedisClient(cfg *Config) redis.UniversalClient {
 		PoolSize:        cfg.PoolSize,
 		MinIdleConns:    minIdleConnections,
 		PoolTimeout:     poolTimeout,
-		IdleTimeout:     idleTimeout,
+		ConnMaxIdleTime: idleTimeout,
 	})
 
 	return universalClient

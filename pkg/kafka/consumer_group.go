@@ -1,8 +1,8 @@
 package kafka
 
 import (
-	"commons/pkg/logger"
 	"context"
+	"github.com/arhamj/go-commons/pkg/logger"
 	"github.com/segmentio/kafka-go"
 	"github.com/segmentio/kafka-go/compress"
 	"sync"
